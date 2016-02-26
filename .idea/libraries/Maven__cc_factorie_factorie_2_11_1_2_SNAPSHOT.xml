@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cc.factorie:factorie_2.11:1.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cc/factorie/factorie_2.11/1.2-SNAPSHOT/factorie_2.11-1.2-20160202.194231-124.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cc/factorie/factorie_2.11/1.2-SNAPSHOT/factorie_2.11-1.2-20160202.194231-124-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cc/factorie/factorie_2.11/1.2-SNAPSHOT/factorie_2.11-1.2-20160202.194231-124-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
