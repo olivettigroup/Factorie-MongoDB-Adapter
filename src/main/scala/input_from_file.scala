@@ -10,7 +10,7 @@ import cc.factorie.app.nlp.segment.{DeterministicSentenceSegmenter, Deterministi
 
 object Adapter{
     def main(args: Array[String]) {
-        val mongoClient = MongoClient()
+        val mongoClient = MongoClient("mongodb://localhost:27972")
         val mongoDB = mongoClient.listDatabaseNames()
         //print(mongoDB.toString +"\n")
 
