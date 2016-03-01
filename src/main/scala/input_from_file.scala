@@ -1,6 +1,6 @@
 package adapter
 
-import org.mongodb.scala.MongoClient
+import com.mongodb.MongoClient
 
 import scala.io._
 import cc.factorie.app.nlp.lemma.WordNetLemmatizer
@@ -10,9 +10,9 @@ import cc.factorie.app.nlp.segment.{DeterministicSentenceSegmenter, Deterministi
 
 object Adapter{
     def main(args: Array[String]) {
-        val mongoClient = MongoClient("mongodb://localhost:27972")
-        val mongoDB = mongoClient.listDatabaseNames()
-        //print(mongoDB.toString +"\n")
+        val mongoClient = new MongoClient("localhost", 27972)
+        val mongoDB = mongoClient.getDB("mongocubbie-test")
+        print(mongoDB.getName + "\n")
 
 
         val file = Source.fromFile("src/main/resources/input.json")
