@@ -1,12 +1,15 @@
 package adapter
 
+import java.io.FileReader
+
 import cc.factorie.db.mongo.MongoCubbieConverter
 import cc.factorie.util.Cubbie
 import org.bson._
 import com.mongodb._
+import org.json.simple
 
-
-
+import org.json.simple._
+import org.json.simple.parser.JSONParser
 import scala.io._
 import cc.factorie.app.nlp.lemma.WordNetLemmatizer
 import cc.factorie.app.nlp.{Sentence, DocumentAnnotationPipeline, Document}
@@ -52,11 +55,16 @@ object Adapter{
             println(o)
         }
 
+
+        val jsonFile = new FileReader("src/main/resources/input.json")
+        val parser = new JSONParser
+        val json = parser.parse(jsonFile).asInstanceOf[JSONObject]
+        println(json.entrySet().toString)
+
         /*
         val file = Source.fromFile("src/main/resources/input.json")
         val content = file.mkString
         val doc = new Document(content)
-
         val annotators = Seq(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger, WordNetLemmatizer)
         val pipeline = new DocumentAnnotationPipeline(annotators)
 
