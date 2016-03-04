@@ -18,40 +18,45 @@ object Adapter{
         val mongoClient = new MongoClient("localhost", 27972)
         val mongoDB = mongoClient.getDB("MyTest")
         val mongoCollection = mongoDB.getCollection("MyCollection")
+
         mongoCollection.drop()
+        println(mongoCollection.getCount())
         val map = collection.mutable.Map[String, Any]()
         map.put("Ao", "Liu")
         map.put("Emma", "Strubell")
         map.put("Andrew", "McCallum")
         val cubbie : Cubbie = new Cubbie(map)
         val myObject = MongoCubbieConverter.eagerDBO(cubbie)
+
+        //mongoCollection.remove(myObject)
         mongoCollection.insert(myObject)
+        //println(mongoCollection.findOne())
 
-        val example : BasicDBObject  = new BasicDBObject()
-
+        val example : DBObject  = new BasicDBObject
         example.put("name", "MongoDB")
         example.put("type", "database")
         example.put("count", 1)
-
-        val info : BasicDBObject = new BasicDBObject()
-
+        val info : DBObject = new BasicDBObject
         info.put("x", 203)
         info.put("y", 102)
 
         example.put("info", info)
 
+        //mongoCollection.remove(example)
         mongoCollection.insert(example)
-        println(mongoCollection)
+        println(mongoCollection.findOne())
 
+        var o : DBObject = null
+        while((o = mongoCollection.findOne()) != null &&  mongoCollection.getCount() > 0){
+            mongoCollection.remove(o)
+            println(o)
+        }
 
+        /*
         val file = Source.fromFile("src/main/resources/input.json")
         val content = file.mkString
         val doc = new Document(content)
-        val sentences = doc.sentences
-        var seq : Seq[Sentence] = Seq()
-        for (i <- 0 until sentences.size) seq
-        println(MongoCubbieConverter.toMongo())
-        /*
+
         val annotators = Seq(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger, WordNetLemmatizer)
         val pipeline = new DocumentAnnotationPipeline(annotators)
 
@@ -61,7 +66,8 @@ object Adapter{
             s.tokens.foreach{t =>
                 println(s"${t.positionInSentence}\t${t.string}\t${t.posTag.categoryValue}\t${t.lemma.lemma}")
             }
-        }*/
+        }
+        */
     }
 }
 
