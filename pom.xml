@@ -57,12 +57,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>cc.factorie</groupId>
             <artifactId>factorie_${scala.majorVersion}</artifactId>
             <version>${factorie.version}</version>
