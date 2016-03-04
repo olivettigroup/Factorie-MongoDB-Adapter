@@ -6,10 +6,8 @@ import cc.factorie.db.mongo.MongoCubbieConverter
 import cc.factorie.util.Cubbie
 import org.bson._
 import com.mongodb._
-import org.json.simple
+import scala.util.parsing.json.JSON
 
-import org.json.simple._
-import org.json.simple.parser.JSONParser
 import scala.io._
 import cc.factorie.app.nlp.lemma.WordNetLemmatizer
 import cc.factorie.app.nlp.{Sentence, DocumentAnnotationPipeline, Document}
@@ -23,12 +21,13 @@ object Adapter{
         val mongoCollection = mongoDB.getCollection("MyCollection")
 
         mongoCollection.drop()
-        println(mongoCollection.getCount())
-        val map = collection.mutable.Map[String, Any]()
-        map.put("Ao", "Liu")
-        map.put("Emma", "Strubell")
-        map.put("Andrew", "McCallum")
-        val cubbie : Cubbie = new Cubbie(map)
+        //println(mongoCollection.getCount())
+
+        val myMap = collection.mutable.Map[String, Any]()
+        myMap.put("Ao", "Liu")
+        myMap.put("Emma", "Strubell")
+        myMap.put("Andrew", "McCallum")
+        val cubbie : Cubbie = new Cubbie(myMap)
         val myObject = MongoCubbieConverter.eagerDBO(cubbie)
 
         //mongoCollection.remove(myObject)
@@ -47,7 +46,7 @@ object Adapter{
 
         //mongoCollection.remove(example)
         mongoCollection.insert(example)
-        println(mongoCollection.findOne())
+        //println(mongoCollection.findOne())
 
         var o : DBObject = null
         while((o = mongoCollection.findOne()) != null &&  mongoCollection.getCount() > 0){
@@ -55,15 +54,12 @@ object Adapter{
             println(o)
         }
 
-
-        val jsonFile = new FileReader("src/main/resources/input.json")
-        val parser = new JSONParser
-        val json = parser.parse(jsonFile).asInstanceOf[JSONObject]
-        println(json.entrySet().toString)
+        val jsonFile = Source.fromFile("src/main/resources/input.json")
+        val jsonContent = jsonFile.mkString
+        val jsonMap = JSON.parseFull(jsonContent).get
+        println(jsonMap)
 
         /*
-        val file = Source.fromFile("src/main/resources/input.json")
-        val content = file.mkString
         val doc = new Document(content)
         val annotators = Seq(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger, WordNetLemmatizer)
         val pipeline = new DocumentAnnotationPipeline(annotators)
