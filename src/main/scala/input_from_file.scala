@@ -1,7 +1,5 @@
 package adapter
 
-import java.io.FileReader
-
 import cc.factorie.db.mongo.MongoCubbieConverter
 import cc.factorie.util.Cubbie
 import org.bson._
@@ -18,7 +16,7 @@ import cc.factorie.app.nlp.segment.{DeterministicSentenceSegmenter, Deterministi
 object Adapter{
     def main(args: Array[String]) {
 
-        val mongo = new MongoClient()
+        val mongo = new MongoClient("localhost", 27972)
         val db = mongo.getDB("Test")
         val collection = db.getCollection("documents")
         
@@ -61,13 +59,18 @@ object Adapter{
         val file = Source.fromFile("src/main/resources/input.json")
         val content = file.mkString
         val map = mutable.Map[String, Any]() ++ JSON.parseFull(content).get.asInstanceOf[Map[String, Any]]
-        val mongoCotent = MongoCubbieConverter.toMongo(content)
         val newCubbie : Cubbie = new Cubbie(map)
         val dbo = MongoCubbieConverter.eagerDBO(newCubbie)
         val c = collection.findOne()
 
+        val de = newCubbie._map.apply("corpus").asInstanceOf[List[Map[String, String]]]
+        var texts = List[String]()
+        for (d <- de)
+            texts :+= d("text")
+        println(texts)
+
         println(dbo)
-        val doc = new DocumentStore(db.getName)
+        //val doc = new DocumentStore(db.getName)
         //doc += new Document(content)
         
         /*
