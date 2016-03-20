@@ -1,7 +1,7 @@
 package adapter
 
 import cc.factorie.db.mongo.{MongoCubbieCollection, MongoCubbieConverter}
-import cc.factorie.util.Cubbie
+import cc.factorie.util.{Cubbie, IntSeq}
 import org.bson._
 import com.mongodb._
 
@@ -24,6 +24,7 @@ object Adapter{
         collection.drop()
         println(collection.getCount())
 
+        /*
         val myMap = mutable.Map[String, Any]()
         myMap.put("Ao", "Liu")
         myMap.put("Emma", "Strubell")
@@ -48,7 +49,7 @@ object Adapter{
         //collection.remove(example)
         collection.insert(example)
         //println(collection.findOne())
-
+        */
         /*
         var o : DBObject = null
         while((o = collection.findOne()) != null &&  collection.getCount() > 0){
@@ -59,13 +60,26 @@ object Adapter{
 
         val file = Source.fromFile("src/main/resources/input.json")
         val content = file.mkString
-        val map = mutable.Map[String, Any]() ++ JSON.parseFull(content).get.asInstanceOf[Map[String, Any]]
-        val newCubbie : Cubbie = new Cubbie(map)
+        val map = mutable.Map[String, List[Map[String, String]]]() ++ JSON.parseFull(content).get.asInstanceOf[Map[String,List[Map[String, String]]]]
+        println(JSON.parseFull(content).get)
+        val newCubbie : Cubbie = new Cubbie(map.asInstanceOf[mutable.Map[String, Any]])
         val dbo = MongoCubbieConverter.eagerDBO(newCubbie)
         val docsMap = newCubbie._map.apply("corpus").asInstanceOf[List[Map[String, String]]]
         println(dbo)
         println(newCubbie)
 
+        /*
+        object DocStore extends DocumentStore{
+            override val annotator = DocumentAnnotatorPipeline(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger)
+        }
+        */
+
+        val docs = new DocumentStore("Test")
+        for (d <- docsMap)
+            docs += (d("text"), "shakes")
+        println(collection.findOne())
+
+        /*
         val cubbieCollection = new MongoCubbieCollection[StandardDocumentCubbie](collection, () => new StandardDocumentCubbie)
         val annotator = DocumentAnnotatorPipeline(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger, WSJTransitionBasedParser)
 
@@ -103,6 +117,7 @@ object Adapter{
         println(parseCubbie)
         val parseDBO = MongoCubbieConverter.eagerDBO(parseCubbie)
         collection.insert(parseDBO)
+        */
 
         //val annotators = Seq(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger, WordNetLemmatizer)
         //val pipeline = new DocumentAnnotationPipeline(annotators)
