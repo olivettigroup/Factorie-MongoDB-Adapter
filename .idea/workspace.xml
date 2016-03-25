@@ -29,8 +29,8 @@
       <file leaf-file-name="input_from_file.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/input_from_file.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+            <state relative-caret-position="-810">
+              <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
               <folding>
                 <element signature="e#17#90#0" expanded="true" />
               </folding>
@@ -38,11 +38,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="List.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar!/scala/collection/immutable/List.class">
+      <file leaf-file-name="IntSeq.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/util/IntSeq.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="19">
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Document.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/app/nlp/Document.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-145">
+              <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -51,7 +61,7 @@
       <file leaf-file-name="Cubbie.scala" pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/util/Cubbie.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
+            <state relative-caret-position="19">
               <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
               <folding />
             </state>
@@ -63,7 +73,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="e#778#808#0" expanded="false" />
+                <element signature="e#974#1003#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,8 +85,8 @@
       <file leaf-file-name="DocumentStore.scala" pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/app/nlp/DocumentStore.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="394" column="39" selection-start-line="394" selection-start-column="39" selection-end-line="394" selection-end-column="39" />
+            <state relative-caret-position="439">
+              <caret line="285" column="6" selection-start-line="285" selection-start-column="6" selection-end-line="285" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -104,9 +118,12 @@
       <file leaf-file-name="MongoCubbieCollection.scala" pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/db/mongo/MongoCubbieCollection.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
+            <state relative-caret-position="6308">
               <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-              <folding />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="e#778#804#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,10 +134,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="37b3e910e9c2b15a18b6ed6da5dcea2c577e5b38" />
+        <entry key="$PROJECT_DIR$" value="4a662571fc3ec5b643e3de1bd5a5d642d5b272f1" />
       </map>
     </option>
-    <option name="RESET_MODE" value="KEEP" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -1190,12 +1207,18 @@
       <workItem from="1458346568186" duration="9648000" />
       <workItem from="1458356772146" duration="132000" />
       <workItem from="1458440297641" duration="661000" />
-      <workItem from="1458484327925" duration="14945000" />
+      <workItem from="1458484327925" duration="17854000" />
+      <workItem from="1458586553139" duration="466000" />
+      <workItem from="1458661522369" duration="1136000" />
+      <workItem from="1458748615426" duration="32000" />
+      <workItem from="1458748686188" duration="21000" />
+      <workItem from="1458748719558" duration="7662000" />
+      <workItem from="1458877731560" duration="7969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54068000" />
+    <option name="totallyTimeSpent" value="74263000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1208,7 +1231,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1218,8 +1241,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32394367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32394367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1260,37 +1283,15 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/db/mongo/MongoCubbieCollection.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6308">
-          <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/input_from_file.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/db/mongo/CubbieMongoTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#808#0" expanded="false" />
+            <element signature="e#974#1003#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1325,7 +1326,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6308">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1343,7 +1347,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#808#0" expanded="false" />
+            <element signature="e#974#1003#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1385,7 +1393,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6308">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1403,7 +1414,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#808#0" expanded="false" />
+            <element signature="e#974#1003#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1445,7 +1460,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1463,7 +1481,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#808#0" expanded="false" />
+            <element signature="e#974#1003#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1487,7 +1509,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1513,7 +1538,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1539,7 +1567,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1565,7 +1596,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1627,7 +1661,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#808#0" expanded="false" />
+            <element signature="e#974#1003#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1635,15 +1673,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/db/mongo/MongoCubbieCollection.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
+        <state relative-caret-position="6308">
           <caret line="354" column="6" selection-start-line="354" selection-start-column="6" selection-end-line="354" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#778#804#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1651,13 +1691,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-88">
           <caret line="41" column="6" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/app/nlp/coref/Mention.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="137" column="6" selection-start-line="137" selection-start-column="6" selection-end-line="137" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar!/scala/collection/immutable/List.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
+        <state relative-caret-position="893">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
@@ -1665,24 +1712,40 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/util/Cubbie.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
+        <state relative-caret-position="19">
           <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/app/nlp/Document.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-145">
+          <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/app/nlp/DocumentStore.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="394" column="39" selection-start-line="394" selection-start-column="39" selection-end-line="394" selection-end-column="39" />
+        <state relative-caret-position="439">
+          <caret line="285" column="6" selection-start-line="285" selection-start-column="6" selection-end-line="285" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/resources/factorie_2.11-1.1-sources.jar!/cc/factorie/util/IntSeq.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/input_from_file.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+        <state relative-caret-position="-810">
+          <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
           <folding>
             <element signature="e#17#90#0" expanded="true" />
           </folding>

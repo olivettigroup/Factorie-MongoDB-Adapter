@@ -1,7 +1,7 @@
 package adapter
 
 import cc.factorie.db.mongo.{MongoCubbieCollection, MongoCubbieConverter}
-import cc.factorie.util.{Cubbie, IntSeq}
+import cc.factorie.util.{ArrayIntSeq, Cubbie, IntArrayBuffer, IntSeq}
 import org.bson._
 import com.mongodb._
 
@@ -17,8 +17,8 @@ import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, Determini
 object Adapter{
     def main(args: Array[String]) {
 
-        val mongo = new MongoClient("localhost", 27972)
-        val db = mongo.getDB("Test")
+        val mongo = new MongoClient() //new MongoClient("localhost", 27972)
+        val db = mongo.getDB("DocumentDB")
         val collection = db.getCollection("documents")
         
         collection.drop()
@@ -61,23 +61,60 @@ object Adapter{
         val file = Source.fromFile("src/main/resources/input.json")
         val content = file.mkString
         val map = mutable.Map[String, List[Map[String, String]]]() ++ JSON.parseFull(content).get.asInstanceOf[Map[String,List[Map[String, String]]]]
-        println(JSON.parseFull(content).get)
+        println(map)
         val newCubbie : Cubbie = new Cubbie(map.asInstanceOf[mutable.Map[String, Any]])
         val dbo = MongoCubbieConverter.eagerDBO(newCubbie)
         val docsMap = newCubbie._map.apply("corpus").asInstanceOf[List[Map[String, String]]]
         println(dbo)
         println(newCubbie)
 
-        /*
         object DocStore extends DocumentStore{
-            override val annotator = DocumentAnnotatorPipeline(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger)
-        }
-        */
+            override val annotator = DocumentAnnotatorPipeline(DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter, OntonotesForwardPosTagger, WSJTransitionBasedParser)
+            override def show(): Unit = {
+                val cubbieIterator = cubbieCollection.iterator
+                for (cubbie <- cubbieIterator) {
+                    val doc = cubbie.document
+                    println(doc.owplString(annotator))
+                    println()
+                }
+                cubbieIterator.close()
+            }
 
-        val docs = new DocumentStore("Test")
+
+            override def intSeqToTokens(doc:Document, tokenOffsets:IntSeq): Unit = {
+                val section = doc.asSection
+                var len = tokenOffsets.length; var o = 0; var i = 0; while (i < len) {
+                    val tokenOffset = tokenOffsets(i)
+                    val stringStart = o + (tokenOffset >>> 16)
+                    val stringEnd = stringStart + (tokenOffset & 0xffff)
+                    println(s"to=$tokenOffset stringStart=$stringStart stringEnd=$stringEnd o=$o")
+                    o = stringEnd - 1
+                    new Token(section, stringStart, stringEnd)
+                    i += 1
+                }
+            }
+
+        }
+
+        val docs = DocStore
         for (d <- docsMap)
             docs += (d("text"), "shakes")
-        println(collection.findOne())
+        val ob = collection.findOne()
+        println(ob)
+        docs.show()
+
+        val cubbie = MongoCubbieConverter.toCubbie(ob)
+        //println(cubbie)
+
+        val section = ob.get("section").asInstanceOf[DBObject]
+
+        //val pp = MongoCubbieConverter.toCubbie(section.get("pp")).asInstanceOf[ArrayIntSeq].toSeq
+        //println(pp, "\t", pp.length)
+        val doc = new Document(ob.get("string").asInstanceOf[String])
+        val ts = MongoCubbieConverter.toCubbie(section.get("ts")).asInstanceOf[IntSeq]
+
+        println(ts.length + "\t" + ts.toSeq)
+        docs.intSeqToTokens(doc, ts)
 
         /*
         val cubbieCollection = new MongoCubbieCollection[StandardDocumentCubbie](collection, () => new StandardDocumentCubbie)
