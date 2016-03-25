@@ -114,7 +114,11 @@ object Adapter{
         val ts = MongoCubbieConverter.toCubbie(section.get("ts")).asInstanceOf[IntSeq]
 
         println(ts.length + "\t" + ts.toSeq)
-        docs.intSeqToTokens(doc, ts)
+        docs.annotator.process(doc)
+        val is = docs.tokensToIntSeq(doc)
+        println(is.length + "\t" + is.toSeq)
+        //docs.intSeqToTokens(doc, docs.tokensToIntSeq(doc))
+
 
         /*
         val cubbieCollection = new MongoCubbieCollection[StandardDocumentCubbie](collection, () => new StandardDocumentCubbie)
