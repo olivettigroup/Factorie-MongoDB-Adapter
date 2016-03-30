@@ -20,7 +20,7 @@ object Adapter{
         val mongo = new MongoClient() //new MongoClient("localhost", 27972)
         val db = mongo.getDB("DocumentDB")
         val collection = db.getCollection("documents")
-        
+
         collection.drop()
         println(collection.getCount())
 
@@ -165,6 +165,17 @@ object Adapter{
     }
 }
 
-object InputFromFile extends App{
+class AdapterOptions extends cc.factorie.util.DefaultCmdOptions with SharedNLPCmdOptions{
+    val portNum = new CmdOption("portNum", 'p', "", "INT", "The port of the database to use")
+    val portName = new CmdOption("portName", 'n', "", "INT", "The port of the database to use")
+    val db = new CmdOption("db", "", "STRING", "The database name")
+    val collection = new CmdOption("collection", "", "STRING", "The collection name")
+}
 
+object ReadDB{
+    def main(args: Array[String]): Unit = {
+        val mongo = new MongoClient()
+        val db = mongo.getDB("predsynth")
+        println(db.getCollectionNames)
+    }
 }
