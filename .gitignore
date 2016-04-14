@@ -2,3 +2,5 @@
 *.iml
 *.jar
 target
+*.json
+*.txt

@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.umass.cs.iesl</groupId>
-    <artifactId>project-name</artifactId>
+    <artifactId>Factorie-MongoDB-Adapter</artifactId>
     <version>0.1-SNAPSHOT</version>
     <inceptionYear>2016</inceptionYear>
 
