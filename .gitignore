@@ -4,3 +4,5 @@
 target
 *.json
 *.txt
+*.sh
+bin
