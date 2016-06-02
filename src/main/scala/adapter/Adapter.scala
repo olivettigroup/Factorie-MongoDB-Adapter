@@ -1,9 +1,12 @@
 package adapter
 
 import cc.factorie.app.nlp.SharedNLPCmdOptions
+import cc.factorie.app.nlp.parse.WSJTransitionBasedParser
+import cc.factorie.app.nlp.pos.OntonotesForwardPosTagger
+import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter}
 import com.mongodb.MongoClient
-
 import com.mongodb.{BasicDBObject, DBObject}
+
 import scala.collection.mutable
 import scala.io.Source
 import scala.util.parsing.json.JSON
@@ -50,8 +53,17 @@ object Adapter {
         }
         */
 
+        // Factorie DocumentAnnotators to run
+        val pipelineComponents = Seq(
+            DeterministicNormalizingTokenizer,
+            DeterministicSentenceSegmenter,
+            OntonotesForwardPosTagger,
+            WSJTransitionBasedParser
+        )
+
+
         //add the parsed docs to the output collection
-        val docs = new DocumentStore(outputDB.getName, outputCollection.toString)
+        val docs = new DocumentStore(pipelineComponents, outputDB.getName, outputCollection.toString)
         docs.collection.drop() //used while testing
         val cursor = inputCollection.find
         while (cursor.hasNext) {
@@ -66,8 +78,8 @@ object Adapter {
 }
 
 class AdapterOptions extends cc.factorie.util.DefaultCmdOptions with SharedNLPCmdOptions {
-    val portNum = new CmdOption("port-num", 'p', "", "INT", "The port of the database to use", false)
-    val portName = new CmdOption("port-name", 'n', "", "STRING", "The port of the database to use", false)
+    val portNum = new CmdOption("port-num", 'p', 27017, "INT", "The port of the database to use", false)
+    val portName = new CmdOption("port-name", 'n', "", "STRING", "Hostname of the database to use", false)
     val inputDB = new CmdOption("inputDB", "predsynth", "STRING", "The input database name", false)
     val inputCollection = new CmdOption("input-collection", "paragraphs", "STRING", "The input collection name", false)
     val outputDB = new CmdOption("outputDB", "outputDB", "STRING", "The output database name", false)
