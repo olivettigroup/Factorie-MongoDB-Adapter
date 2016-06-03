@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z "$FAC_ADAPTER_ROOT" ]; then
+  export FAC_ADAPTER_ROOT=`pwd` # try pwd
+fi
+
 MEMORY=10g
 
 $FAC_ADAPTER_ROOT/bin/run_class.sh -Xmx$MEMORY adapter.Adapter \
