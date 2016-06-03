@@ -6,6 +6,7 @@ import cc.factorie.app.nlp.pos.OntonotesForwardPosTagger
 import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter}
 import com.mongodb.MongoClient
 import com.mongodb.{BasicDBObject, DBObject}
+import edu.umass.cs.iesl.nndepparse.FeedForwardNNParser
 
 import scala.collection.mutable
 import scala.io.Source
@@ -21,7 +22,7 @@ object Adapter {
         assert(opts.inputDB.wasInvoked || opts.inputCollection.wasInvoked)
 
         // set the port to use
-        val mongo = new MongoClient(opts.portName.value, opts.portNum.value.toInt)
+        val mongo = new MongoClient(opts.portName.value, opts.portNum.value)
 
         // set the DB and Collection of input and output files
         val inputDB = mongo.getDB(opts.inputDB.value)
@@ -53,7 +54,10 @@ object Adapter {
         }
         */
 
-        // Factorie DocumentAnnotators to run
+      val FeedForwardNNParser = new FeedForwardNNParser(opts.modelFile.value, opts.mapsDir.value, opts.numToPrecompute.value)
+
+
+      // Factorie DocumentAnnotators to run
         val pipelineComponents = Seq(
             DeterministicNormalizingTokenizer,
             DeterministicSentenceSegmenter,
@@ -78,10 +82,13 @@ object Adapter {
 }
 
 class AdapterOptions extends cc.factorie.util.DefaultCmdOptions with SharedNLPCmdOptions {
-    val portNum = new CmdOption("port-num", 'p', 27017, "INT", "The port of the database to use", false)
-    val portName = new CmdOption("port-name", 'n', "", "STRING", "Hostname of the database to use", false)
-    val inputDB = new CmdOption("inputDB", "predsynth", "STRING", "The input database name", false)
-    val inputCollection = new CmdOption("input-collection", "paragraphs", "STRING", "The input collection name", false)
-    val outputDB = new CmdOption("outputDB", "outputDB", "STRING", "The output database name", false)
-    val outputCollection = new CmdOption("output-collection", "outputCollection", "STRING", "The output collection name", false)
+  val portNum = new CmdOption("port-num", 'p', 27017, "INT", "The port of the database to use", false)
+  val portName = new CmdOption("port-name", 'n', "", "STRING", "Hostname of the database to use", false)
+  val inputDB = new CmdOption("inputDB", "predsynth", "STRING", "The input database name", false)
+  val inputCollection = new CmdOption("input-collection", "paragraphs", "STRING", "The input collection name", false)
+  val outputDB = new CmdOption("outputDB", "outputDB", "STRING", "The output database name", false)
+  val outputCollection = new CmdOption("output-collection", "outputCollection", "STRING", "The output collection name", false)
+  val numToPrecompute = new CmdOption("precompute-words", -1, "INT", "Number of word embeddings to precompute")
+  val mapsDir = new CmdOption("maps-dir", "", "STRING", "Dir under which to look for existing maps to use; If empty write new maps")
+  val modelFile = new CmdOption("model", "", "STRING", "Serialized model in HDF5 format")
 }
