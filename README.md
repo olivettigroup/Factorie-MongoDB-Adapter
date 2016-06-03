@@ -20,8 +20,10 @@ mvn compile
 
 Running
 ----
-Example using Maven to run:
+The run script will work on dishwasher:
 
 ```
-mvn exec:java -Dexec.mainClass="adapter.Adapter" -Dexec.args="--inputDB predsynth --input-collection paragraphs --port-num 27017 --port-name localhost --outputDB outputDB --output-collection outputCollection
+./bin/run.sh
 ```
+
+Note that to use the nn parser you must specify an intmaps directory and model file (see the run script).
