@@ -11,7 +11,7 @@ $FAC_ADAPTER_ROOT/bin/run_class.sh -Xmx$MEMORY adapter.Adapter \
 --input-collection paragraphs \
 --port-num 27017 \
 --port-name localhost \
---outputDB outputDB \
---output-collection outputCollection \
---maps-dir /home/umaguest/intmaps/standard-psr-chen-collobert \
---model /home/umaguest/model-ptb-standard-psr-chen-collobert.torch.hd5
+--outputDB predsynth \
+--output-collection parsed_papers \
+--maps-dir standard-psr-chen-collobert \
+--model model-ptb-standard-psr-chen-collobert.torch.hd5
