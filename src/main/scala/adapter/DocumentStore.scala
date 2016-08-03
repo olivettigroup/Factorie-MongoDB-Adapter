@@ -12,7 +12,7 @@ import cc.factorie.util._
 import com.mongodb._
 import edu.umass.cs.iesl.nndepparse.StanfordParseTree
 
-class DocumentStore(pipelineComponents: Seq[DocumentAnnotator], mongoDB:String = "predsynth", collectionName:String = "paragraphs") {
+class DocumentStore(pipelineComponents: Seq[DocumentAnnotator], mongoDB:String = "predsynth", collectionName:String = "papers") {
     val mongo = new MongoClient()
     val db = mongo.getDB(mongoDB)
     val collection = db.getCollection(collectionName)
