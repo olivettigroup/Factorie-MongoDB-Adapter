@@ -1,11 +1,10 @@
 #!/bin/bash
 # run_class.sh [<jvm options>] <scala object with main> [<arguments>]
-
-args="--inputDB DocumentDB --input-collection documents --port-num 27017 --port-name localhost"
+args="$@"
 
 memory=32g
 
-PROJ_ROOT=$SPECIFIC_PROJECT_ROOT
+PROJ_ROOT=$FAC_ADAPTER_ROOT
 
 # If the root directory is not passed as an environment variable, set it to 
 # the current directory.
