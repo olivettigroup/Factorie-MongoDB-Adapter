@@ -75,9 +75,7 @@ object Adapter {
         val cursor = inputCollection.find
         while (cursor.hasNext) {
             val next = cursor.next.toMap
-            for (para <- next.get("paragraphs")) {
-              docs +=(para.get("text").toString, para.get("_id").toString)
-            }
+            docs +=(next.get("text").toString, next.get("_id").toString)
         }
 
         docs.show()
