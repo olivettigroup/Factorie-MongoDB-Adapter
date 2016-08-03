@@ -48,9 +48,11 @@ object Adapter {
 
         val corpus = map("corpus")
         for (i <- corpus.indices) {
+          for (para <- corpus(i).get("paragraphs")) {
             val o: DBObject = new BasicDBObject
-            o.put("paragraphs", corpus(i)("paragraphs"))
+            o.put("text", para.get("text"))
             inputCollection.insert(o)
+          }
         }
 
       val FeedForwardNNParser = new FeedForwardNNParser(opts.modelFile.value, opts.mapsDir.value, opts.numToPrecompute.value)
@@ -71,7 +73,9 @@ object Adapter {
         val cursor = inputCollection.find
         while (cursor.hasNext) {
             val next = cursor.next.toMap
-            docs +=(next.get("paragraphs").toString, next.get("_id").toString)
+            for (para <- next.get("paragraphs")) {
+              docs +=(para.get("text").toString, para.get("_id").toString)
+            }
         }
 
         docs.show()
