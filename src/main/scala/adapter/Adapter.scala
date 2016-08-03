@@ -46,6 +46,7 @@ object Adapter {
         //println(newCubbie)
         */
 
+        /*
         val corpus = map("corpus")
         for (i <- corpus.indices) {
           for (para <- corpus(i).get("paragraphs")) {
@@ -54,6 +55,7 @@ object Adapter {
             inputCollection.insert(o)
           }
         }
+        */
 
       val FeedForwardNNParser = new FeedForwardNNParser(opts.modelFile.value, opts.mapsDir.value, opts.numToPrecompute.value)
 
