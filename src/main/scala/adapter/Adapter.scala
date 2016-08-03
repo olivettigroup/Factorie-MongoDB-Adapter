@@ -36,7 +36,7 @@ object Adapter {
         val file = Source.fromFile("src/main/resources/input.json")
         val content = file.mkString
         val map = mutable.Map[String, List[Map[String, String]]]() ++ JSON.parseFull(content).get.asInstanceOf[Map[String, List[Map[String, String]]]]
-        println(map)
+        println(map)*/
 
         /*
         val newCubbie : Cubbie = new Cubbie(map.asInstanceOf[mutable.Map[String, Any]])
