@@ -71,16 +71,16 @@ object Adapter {
 
         //add the parsed docs to the output collection
         val docs = new DocumentStore(pipelineComponents, outputDB.getName, outputCollection.toString)
-        docs.collection.drop() //used while testing
-        val cursor = inputCollection.find
-        while (cursor.hasNext) {
-            val next = cursor.next.toMap
-            docs +=(next.get("text").toString, next.get("_id").toString)
-        }
-
-        docs.show()
-        val ob = docs.collection.findOne
-        println(ob)
+        //docs.collection.drop() //used while testing
+        // val cursor = inputCollection.find
+        // while (cursor.hasNext) {
+        //     val next = cursor.next.toMap
+        //     docs +=(next.get("text").toString, next.get("_id").toString)
+        // }
+        //
+        // docs.show()
+        // val ob = docs.collection.findOne
+        // println(ob)
     }
 }
 
