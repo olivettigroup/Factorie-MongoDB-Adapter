@@ -4,8 +4,7 @@ import cc.factorie.app.nlp.{Document, SharedNLPCmdOptions}
 import cc.factorie.app.nlp.parse.WSJTransitionBasedParser
 import cc.factorie.app.nlp.pos.OntonotesForwardPosTagger
 import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter}
-import com.mongodb.MongoClient
-import com.mongodb.{BasicDBObject, DBObject}
+import com.mongodb.{BasicDBList, MongoClient, BasicDBObject, DBObject}
 import edu.umass.cs.iesl.nndepparse.FeedForwardNNParser
 
 import scala.collection.mutable
@@ -76,7 +75,10 @@ object Adapter {
           val doc = new Document()
           val paper = cursor.next.toMap
           doc.setName(paper.get("_id").toString)
-          val paragraphs = paper.get("paragraphs").asInstanceOf[Array[Map[String,String]]]
+          val paragraphs = paper.get("paragraphs").asInstanceOf[Array[BasicDBList]]
+//          while(paragraphs.hasNext()){
+//            println(paragraphs(1))
+//          }
           println(paragraphs(1))
           println(paragraphs(1).get("text").toString)
 
