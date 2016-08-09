@@ -84,7 +84,7 @@ object Adapter {
 //          while(paragraphs.hasNext()){
 //            println(paragraphs(1))
 //          }
-          println(paragraphs.get(1))
+//          println(paragraphs.get(1))
 //          println(paragraphs.get(1).get("text").toString)
 
 //            paragraphs.foreach{p =>
