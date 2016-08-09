@@ -70,6 +70,8 @@ object Adapter {
         val docs = new DocumentStore(pipelineComponents, outputDB.getName, outputCollection.toString)
         docs.collection.drop() //used while testing
         val cursor = inputCollection.find
+      println(opts.inputCollection.value)
+        println(cursor.size())
         while (cursor.hasNext) {
           val doc = new Document()
           val paper = cursor.next.toMap
