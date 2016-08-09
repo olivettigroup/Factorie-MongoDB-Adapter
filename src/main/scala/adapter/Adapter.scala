@@ -1,6 +1,6 @@
 package adapter
 
-import cc.factorie.app.nlp.SharedNLPCmdOptions
+import cc.factorie.app.nlp.{Document, SharedNLPCmdOptions}
 import cc.factorie.app.nlp.parse.WSJTransitionBasedParser
 import cc.factorie.app.nlp.pos.OntonotesForwardPosTagger
 import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter}
@@ -71,8 +71,17 @@ object Adapter {
         docs.collection.drop() //used while testing
         val cursor = inputCollection.find
         while (cursor.hasNext) {
-            val next = cursor.next.toMap
-            docs +=(next.get("text").toString, next.get("_id").toString)
+          val doc = new Document()
+          val paper = cursor.next.toMap
+          doc.setName(paper.get("_id").toString)
+          val paragraphs = paper.get("paragraphs")
+          println(paragraphs)
+
+//            paragraphs.foreach{p =>
+//              val paragraphText = p.toMap.get("text").toString
+//            }
+            docs += doc
+//            docs +=(next.get("text").toString, next.get("_id").toString)
         }
 
         docs.show()
@@ -85,7 +94,7 @@ class AdapterOptions extends cc.factorie.util.DefaultCmdOptions with SharedNLPCm
   val portNum = new CmdOption("port-num", 'p', 27017, "INT", "The port of the database to use", false)
   val portName = new CmdOption("port-name", 'n', "", "STRING", "Hostname of the database to use", false)
   val inputDB = new CmdOption("inputDB", "predsynth", "STRING", "The input database name", false)
-  val inputCollection = new CmdOption("input-collection", "paragraphs", "STRING", "The input collection name", false)
+  val inputCollection = new CmdOption("input-collection", "papers", "STRING", "The input collection name", false)
   val outputDB = new CmdOption("outputDB", "outputDB", "STRING", "The output database name", false)
   val outputCollection = new CmdOption("output-collection", "outputCollection", "STRING", "The output collection name", false)
   val numToPrecompute = new CmdOption("precompute-words", -1, "INT", "Number of word embeddings to precompute")
