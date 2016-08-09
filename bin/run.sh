@@ -8,7 +8,7 @@ MEMORY=10g
 
 $FAC_ADAPTER_ROOT/bin/run_class.sh -Xmx$MEMORY adapter.Adapter \
 --inputDB predsynth \
---input-collection paragraphs \
+--input-collection papers \
 --port-num 27017 \
 --port-name localhost \
 --outputDB outputDB \
