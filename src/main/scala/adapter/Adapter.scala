@@ -75,7 +75,12 @@ object Adapter {
           val doc = new Document()
           val paper = cursor.next.toMap
           doc.setName(paper.get("_id").toString)
-          val paragraphs = paper.get("paragraphs").asInstanceOf[BasicDBList]
+          val paragraphs = paper.get("paragraphs").asInstanceOf[BasicDBList].iterator()
+          while(paragraphs.hasNext()){
+            val paragraph = paragraphs.next()
+            println(paragraph.asInstanceOf[Map[String,Any]].get("text").toString)
+          }
+
 //          while(paragraphs.hasNext()){
 //            println(paragraphs(1))
 //          }
