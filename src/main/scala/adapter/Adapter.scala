@@ -1,6 +1,6 @@
 package adapter
 
-import cc.factorie.app.nlp.{Document, SharedNLPCmdOptions}
+import cc.factorie.app.nlp.{BasicSection, Document, SharedNLPCmdOptions}
 import cc.factorie.app.nlp.parse.WSJTransitionBasedParser
 import cc.factorie.app.nlp.pos.OntonotesForwardPosTagger
 import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter}
@@ -75,21 +75,15 @@ object Adapter {
           val doc = new Document()
           val paper = cursor.next.toMap
           doc.setName(paper.get("_id").toString)
+          var currentStart = 0
           val paragraphs = paper.get("paragraphs").asInstanceOf[BasicDBList].iterator()
           while(paragraphs.hasNext()){
             val paragraph = paragraphs.next()
-            println(paragraph.asInstanceOf[BasicDBObject].get("text").toString)
+            val text = paragraph.asInstanceOf[BasicDBObject].get("text").toString + "\n"
+            doc.appendString(text)
+            val section = new BasicSection(doc, currentStart, currentStart+text.length)
+            currentStart += text.length
           }
-
-//          while(paragraphs.hasNext()){
-//            println(paragraphs(1))
-//          }
-//          println(paragraphs.get(1))
-//          println(paragraphs.get(1).get("text").toString)
-
-//            paragraphs.foreach{p =>
-//              val paragraphText = p.toMap.get("text").toString
-//            }
             docs += doc
 //            docs +=(next.get("text").toString, next.get("_id").toString)
         }
