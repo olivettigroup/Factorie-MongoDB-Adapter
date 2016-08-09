@@ -21,11 +21,9 @@ class DocumentStore(pipelineComponents: Seq[DocumentAnnotator], mongoDB:String =
     val annotator = new DocumentAnnotationPipeline(pipelineComponents)
 
     def +=(doc:Document): Unit = {
-        for (para <- doc.get("paragraphs")){
-          annotator.process(para)
-          //println(s"Adding doc tokens=${doc.tokenCount}")
-          //println("Input document:"); println(doc.owplString(annotator))
-        }
+        annotator.process(doc)
+        //println(s"Adding doc tokens=${doc.tokenCount}")
+        //println("Input document:"); println(doc.owplString(annotator))
         cubbieCollection += new StandardDocumentCubbie(doc)
     }
     def ++=(docs:Iterable[Document]): Unit = {
