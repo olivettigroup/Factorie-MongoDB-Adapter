@@ -1,11 +1,10 @@
 package adapter
 
-import cc.factorie.app.nlp.SharedNLPCmdOptions
+import cc.factorie.app.nlp.{BasicSection, Document, SharedNLPCmdOptions}
 import cc.factorie.app.nlp.parse.WSJTransitionBasedParser
 import cc.factorie.app.nlp.pos.OntonotesForwardPosTagger
 import cc.factorie.app.nlp.segment.{DeterministicNormalizingTokenizer, DeterministicSentenceSegmenter}
-import com.mongodb.MongoClient
-import com.mongodb.{BasicDBObject, DBObject}
+import com.mongodb.{BasicDBList, MongoClient, BasicDBObject, DBObject}
 import edu.umass.cs.iesl.nndepparse.FeedForwardNNParser
 
 import scala.collection.mutable
@@ -74,9 +73,19 @@ object Adapter {
         //docs.collection.drop() //used while testing
         val cursor = inputCollection.find
         while (cursor.hasNext) {
-            val next = cursor.next.toMap
-            //docs +=(next.get("text").toString, next.get("_id").toString)
-            docs +=(next)
+          val doc = new Document()
+          val paper = cursor.next.toMap
+          doc.setName(paper.get("_id").toString)
+          var currentStart = 0
+          val paragraphs = paper.get("paragraphs").asInstanceOf[BasicDBList].iterator()
+          while(paragraphs.hasNext()){
+            val paragraph = paragraphs.next()
+            val text = paragraph.asInstanceOf[BasicDBObject].get("text").toString + "\n"
+            doc.appendString(text)
+            val section = new BasicSection(doc, currentStart, currentStart+text.length)
+            currentStart += text.length
+          }
+            docs += doc
         }
 
         docs.show()
