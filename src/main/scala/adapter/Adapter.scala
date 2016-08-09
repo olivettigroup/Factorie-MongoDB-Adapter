@@ -69,8 +69,6 @@ object Adapter {
         val docs = new DocumentStore(pipelineComponents, outputDB.getName, outputCollection.toString)
         docs.collection.drop() //used while testing
         val cursor = inputCollection.find
-      println(opts.inputCollection.value)
-        println(cursor.size())
         while (cursor.hasNext) {
           val doc = new Document()
           val paper = cursor.next.toMap
@@ -85,7 +83,6 @@ object Adapter {
             currentStart += text.length
           }
             docs += doc
-//            docs +=(next.get("text").toString, next.get("_id").toString)
         }
 
         docs.show()
